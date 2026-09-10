@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛新宇个人简历介绍-生平经历与学术研究资料</title>
+    <meta name="description" content="毛新宇个人简历介绍页面，提供毛新宇的基本信息、教育背景、学术研究方向、社会职务及公开活动等客观资料整理，帮助用户全面了解其个人经历与公开信息。">
+    <meta name="keywords" content="毛新宇,毛新宇个人简历,毛新宇介绍,毛新宇生平,毛新宇研究,毛新宇职务">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+            background: #f5f7fa;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+        .wrapper {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        /* Header */
+        .site-header {
+            background: #1e3a5f;
+            color: #fff;
+            padding: 18px 0;
+            border-bottom: 3px solid #b08d57;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .logo-area .sub {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-top: 2px;
+            font-weight: 300;
+        }
+        .top-nav {
+            display: flex;
+            gap: 24px;
+        }
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .top-nav a:hover {
+            border-bottom-color: #b08d57;
+        }
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #7a7a7a;
+            padding: 18px 0 8px;
+        }
+        .breadcrumb a {
+            color: #1e5a8a;
+            text-decoration: none;
+        }
+        /* Hero */
+        .profile-hero {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 28px 28px 24px;
+            margin: 12px 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            align-items: center;
+            border-left: 6px solid #b08d57;
+        }
+        .avatar-placeholder {
+            width: 130px;
+            height: 160px;
+            background: #d8e1e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5a6a7a;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 10px;
+            flex-shrink: 0;
+            border: 1px solid #c0ccd6;
+        }
+        .hero-info {
+            flex: 1;
+            min-width: 260px;
+        }
+        .hero-info h2 {
+            font-size: 2rem;
+            color: #1e3a5f;
+            font-weight: 650;
+            margin-bottom: 6px;
+        }
+        .hero-info .tagline {
+            font-size: 1.05rem;
+            color: #3a5a78;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            font-size: 0.92rem;
+            color: #444;
+            padding: 10px 0;
+            border-top: 1px solid #e6eaef;
+            border-bottom: 1px solid #e6eaef;
+            margin-bottom: 12px;
+        }
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-desc {
+            font-size: 0.95rem;
+            color: #3d3d3d;
+            max-width: 720px;
+        }
+        /* Quick facts */
+        .quick-facts {
+            background: #f0f4f8;
+            border-radius: 10px;
+            padding: 16px 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 36px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .quick-facts strong {
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        /* Main layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 32px;
+            padding-bottom: 40px;
+        }
+        .content-main {
+            min-width: 0;
+        }
+        .side-panel {
+            min-width: 0;
+        }
+        /* Section cards */
+        .section-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf0f3;
+        }
+        .section-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-card h2 .icon {
+            color: #b08d57;
+        }
+        .section-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2a4a6a;
+            margin: 18px 0 8px;
+        }
+        .section-card p {
+            margin-bottom: 12px;
+            font-size: 0.96rem;
+            color: #333;
+        }
+        .section-card ul {
+            margin: 10px 0 12px 20px;
+            list-style: none;
+        }
+        .section-card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 18px;
+        }
+        .section-card li::before {
+            content: "·";
+            position: absolute;
+            left: 2px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #b08d57;
+            line-height: 1;
+            top: 0;
+        }
+        .timeline {
+            margin: 16px 0 8px;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        .timeline-year {
+            flex-shrink: 0;
+            width: 80px;
+            font-weight: 600;
+            color: #1e5a8a;
+            font-size: 0.95rem;
+            text-align: right;
+            padding-top: 2px;
+        }
+        .timeline-desc {
+            border-left: 2px solid #d9e2ec;
+            padding-left: 18px;
+            padding-bottom: 4px;
+            font-size: 0.95rem;
+        }
+        /* Research area */
+        .research-area {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 16px 18px;
+            border-left: 4px solid #b08d57;
+            margin: 12px 0;
+        }
+        /* Side widgets */
+        .side-widget {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf0f3;
+        }
+        .side-widget h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .side-widget ul {
+            list-style: none;
+            margin: 0;
+        }
+        .side-widget li {
+            padding: 7px 0;
+            border-bottom: 1px dashed #e8ecef;
+            font-size: 0.92rem;
+            color: #333;
+            display: flex;
+            align-items: baseline;
+        }
+        .side-widget li:last-child {
+            border-bottom: none;
+        }
+        .side-widget li span {
+            color: #888;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 14px;
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 0.98rem;
+            cursor: default;
+            margin-bottom: 4px;
+        }
+        .faq-answer {
+            font-size: 0.93rem;
+            color: #3a3a3a;
+            margin-left: 16px;
+            padding-left: 12px;
+            border-left: 2px solid #e0e6ed;
+        }
+        /* Footer */
+        .site-footer {
+            background: #1e3a5f;
+            color: #cbd5e0;
+            padding: 28px 0 20px;
+            margin-top: 30px;
+            font-size: 0.88rem;
+            border-top: 3px solid #b08d57;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-links a {
+            color: #b8c9dc;
+            text-decoration: none;
+            margin-right: 18px;
+            border-bottom: 1px dotted #5a7a9a;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .copyright {
+            margin-top: 18px;
+            border-top: 1px solid #2e4d6e;
+            padding-top: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8aa0b8;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .avatar-placeholder {
+                width: 100%;
+                height: auto;
+                min-height: 80px;
+                padding: 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .logo-area h1 {
+                font-size: 1.3rem;
+            }
+            .top-nav {
+                gap: 14px;
+                flex-wrap: wrap;
+                margin-top: 8px;
+            }
+            .section-card {
+                padding: 18px 16px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 2px;
+            }
+            .timeline-year {
+                text-align: left;
+                width: auto;
+                font-weight: 700;
+            }
+            .timeline-desc {
+                border-left: none;
+                padding-left: 0;
+                border-left: 2px solid #d9e2ec;
+                padding-left: 12px;
+                margin-left: 2px;
+            }
+            .hero-meta {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .quick-facts {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper header-inner">
+            <div class="logo-area">
+                <h1>毛新宇个人简历介绍</h1>
+                <div class="sub">客观整理 · 公开资料汇总</div>
+            </div>
+            <nav class="top-nav">
+                <a href="#profile">基本信息</a>
+                <a href="#education">教育背景</a>
+                <a href="#research">学术研究</a>
+                <a href="#position">社会职务</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <div class="breadcrumb">
+                <a href="#">首页</a> &gt; <a href="#">人物资料</a> &gt; 毛新宇个人简历
+            </div>
+
+            <!-- 首屏简介 -->
+            <section class="profile-hero" id="profile">
+                <div class="avatar-placeholder">
+                    人物<br>照片<br>(示意)
+                </div>
+                <div class="hero-info">
+                    <h2>毛新宇</h2>
+                    <div class="tagline">军事科学院研究员 · 博士 · 毛泽东研究领域学者</div>
+                    <div class="hero-meta">
+                        <span>🕓 出生年份：1970年</span>
+                        <span>🏙 籍贯：湖南湘潭</span>
+                        <span>🎓 最高学历：博士</span>
+                        <span>📚 专业：军事历史 / 毛泽东军事思想</span>
+                    </div>
+                    <div class="hero-desc">
+                        毛新宇是毛泽东同志的嫡孙，毛岸青与邵华之子。长期从事毛泽东军事思想、军事历史及毛泽东生平领域的研究工作，在军事科学院任职多年，并担任多项学术与社会职务。下面根据公开资料，对其个人简历进行系统梳理。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 快速信息卡 -->
+            <div class="quick-facts">
+                <div><strong>民族：</strong>汉族</div>
+                <div><strong>政治面貌：</strong>中共党员</div>
+                <div><strong>专业技术：</strong>研究员（正高级）</div>
+                <div><strong>主要方向：</strong>毛泽东军事思想、中国近现代军事史</div>
+                <div><strong>代表作品：</strong>《毛泽东的军事艺术》等</div>
+            </div>
+
+            <!-- 主内容区与侧边栏 -->
+            <div class="main-grid">
+                <div class="content-main">
+                    <!-- 教育背景 -->
+                    <section class="section-card" id="education">
+                        <h2><span class="icon">🎓</span> 教育背景与学术历程</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1988年</div>
+                                <div class="timeline-desc">考入中国人民大学历史系，攻读历史学专业本科。在校期间系统学习中国近现代史，为日后研究奠定基础。</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1992年</div>
+                                <div class="timeline-desc">本科毕业后，进入中央党校理论部攻读硕士研究生，研究方向为中共党史与毛泽东思想。</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1995年</div>
+                                <div class="timeline-desc">获得法学硕士学位（中共党史专业）。随后继续深造，在军事科学院攻读军事历史专业博士研究生。</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2000年代</div>
+                                <div class="timeline-desc">获得军事学博士学位，学位论文围绕毛泽东军事思想的历史地位与当代价值展开。此后留在军事科学院从事研究工作。</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 8px; font-size:0.92rem; color:#5a6a7a;">注：以上时间节点根据公开报道与学术履历综合整理，部分年份为大致区间。</p>
+                    </section>
+
+                    <!-- 研究领域 -->
+                    <section class="section-card" id="research">
+                        <h2><span class="icon">📖</span> 主要学术研究方向</h2>
+                        <div class="research-area">
+                            <strong>核心领域：</strong>毛泽东军事思想、毛泽东生平与军事实践、中国近现代军事史、国防与军队建设理论。
+                        </div>
+                        <p>毛新宇在军事科学院工作期间，主要承担毛泽东军事思想与军事历史领域的课题研究，参与多项全军级科研项目。其研究注重将革命战争历史与当代国防建设相结合，围绕毛泽东在重大历史关头的战略决策展开分析。</p>
+                        <p>他曾在学术期刊发表多篇论文，并参与编写《毛泽东军事思想发展史》等著作。在公开学术活动中，多次以“毛泽东军事思想研究”为主题进行报告与交流。</p>
+                        <h3>代表性学术观点简述</h3>
+                        <ul>
+                            <li>强调毛泽东军事思想在现代战争中的指导意义，认为其方法论仍具重要参考价值。</li>
+                            <li>主张从历史维度理解人民战争的深层逻辑，结合新时代军事变革进行再阐释。</li>
+                            <li>关注毛泽东军事著作中的哲学思辨，如《论持久战》的战略预见性研究。</li>
+                        </ul>
+                    </section>
+
+                    <!-- 社会职务 -->
+                    <section class="section-card" id="position">
+                        <h2><span class="icon">📋</span> 社会职务与公开活动</h2>
+                        <p>毛新宇在军事科研工作之外，还担任多项社会职务，并经常出席纪念活动、学术研讨会及爱国主义教育讲座。以下是较为公开且可查的职务信息：</p>
+                        <ul>
+                            <li>军事科学院战争研究院研究员（专业技术少将军衔）</li>
+                            <li>全国政协委员（社会科学界别）</li>
+                            <li>中国毛泽东军事思想学会理事</li>
+                            <li>多所高校及党校的兼职教授或客座研究员</li>
+                            <li>中国红色文化研究会高级顾问</li>
+                        </ul>
+                        <p style="font-size:0.92rem; color:#6a6a6a;">需要说明的是，部分社会团体职务可能随届次调整，本页仅列示公开报道中反复出现的职务，具体以官方最新发布为准。</p>
+                    </section>
+
+                    <!-- 个人经历补充 -->
+                    <section class="section-card">
+                        <h2><span class="icon">📌</span> 个人经历与家庭背景</h2>
+                        <p>毛新宇1970年出生于北京，是毛岸青与邵华之子，毛泽东同志的孙子。由于家庭环境的影响，他从小受到革命历史教育熏陶。在公开场合，他多次表示自己“在爷爷的教导下成长”，并致力于传承红色文化。</p>
+                        <p>其母邵华女士曾长期从事摄影与文学工作，对毛新宇的文史兴趣培养有重要影响。毛新宇在学术研究之外，也积极参与红色纪念活动，如毛泽东诞辰纪念座谈会、革命老区考察调研等。</p>
+                        <p>在个人生活方面，毛新宇较为低调，公开报道中鲜少谈及家庭细节。他育有一子一女，曾带家人参观韶山等革命故地，以身作则进行革命传统教育。</p>
+                    </section>
+
+                    <!-- 著作与文章 -->
+                    <section class="section-card">
+                        <h2><span class="icon">✍️</span> 主要著作与文章</h2>
+                        <ul>
+                            <li>《毛泽东的军事艺术》（合著，系统阐述毛泽东军事指挥艺术）</li>
+                            <li>《毛泽东军事思想新论》（参与撰写）</li>
+                            <li>《军事历史研究中的若干问题》（学术论文）</li>
+                            <li>《从战略防御到战略反攻——毛泽东军事决策的辩证思维》（期刊文章）</li>
+                            <li>《毛泽东与抗美援朝战争》(研究文章，收录于专题文集)</li>
+                        </ul>
+                        <p style="font-size:0.9rem; color:#777; margin-top:6px;">注：以上著作信息根据公开书目及学术数据库检索结果整理，部分为参与编写，非全部独立完成。</p>
+                    </section>
+
+                    <!-- FAQ -->
+                    <section class="section-card" id="faq">
+                        <h2><span class="icon">❓</span> 关于毛新宇的常见问题</h2>
+                        <div class="faq-item">
+                            <div class="faq-question">问：毛新宇的军衔是什么？</div>
+                            <div class="faq-answer">根据公开报道，毛新宇在军事科学院任职期间，于2010年晋升为少将军衔（专业技术少将），属于研究系列的高级职称。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">问：毛新宇的主要工作单位是哪里？</div>
+                            <div class="faq-answer">他的主要工作单位是中国人民解放军军事科学院，长期在该院从事毛泽东军事思想研究工作，担任研究员。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">问：毛新宇是毛泽东的什么人？</div>
+                            <div class="faq-answer">毛新宇是毛泽东同志的嫡孙，即毛泽东之子毛岸青与邵华的儿子。他是毛泽东直系亲属中较为公众化的一位。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">问：毛新宇有哪些学术成就？</div>
+                            <div class="faq-answer">他在军事历史领域有多年研究积累，出版和参与编写了若干部关于毛泽东军事思想的著作，并在学术期刊发表多篇论文。具体成果可参考其署名著作。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">问：毛新宇是否担任政治职务？</div>
+                            <div class="faq-answer">他担任全国政协委员，属于社会科学界别，主要参与政治协商与建言献策，但并非行政领导岗位。</div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 侧边栏 -->
+                <aside class="side-panel">
+                    <div class="side-widget">
+                        <h3>📌 信息速览</h3>
+                        <ul>
+                            <li><span>姓名</span> 毛新宇</li>
+                            <li><span>性别</span> 男</li>
+                            <li><span>出生</span> 1970年（北京）</li>
+                            <li><span>籍贯</span> 湖南湘潭</li>
+                            <li><span>学历</span> 博士（军事历史）</li>
+                            <li><span>单位</span> 军事科学院</li>
+                            <li><span>军衔</span> 少将（专业技术）</li>
+                            <li><span>党派</span> 中国共产党</li>
+                        </ul>
+                    </div>
+
+                    <div class="side-widget">
+                        <h3>🏛 重要经历节点</h3>
+                        <ul>
+                            <li><span>1990s</span> 人民大学历史系就读</li>
+                            <li><span>1995</span> 中央党校硕士毕业</li>
+                            <li><span>2000s</span> 获军事学博士</li>
+                            <li><span>2000s-</span> 军事科学院研究员</li>
+                            <li><span>2010</span> 晋升少将军衔</li>
+                            <li><span>2013-</span> 担任全国政协委员</li>
+                        </ul>
+                    </div>
+
+                    <div class="side-widget">
+                        <h3>📚 相关人物</h3>
+                        <ul>
+                            <li><span>祖父</span> 毛泽东</li>
+                            <li><span>父亲</span> 毛岸青</li>
+                            <li><span>母亲</span> 邵华</li>
+                            <li><span>妻子</span> 刘滨</li>
+                            <li><span>子女</span> 一子一女</li>
+                        </ul>
+                    </div>
+
+                    <div class="side-widget">
+                        <h3>🔍 搜索提示</h3>
+                        <p style="font-size:0.88rem; color:#555; margin-bottom:8px;">如需了解更详细的学术成果或最新动态，建议使用“毛新宇 军事科学院”、“毛新宇 论文”等组合词进行检索。</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-inner">
+                <div>
+                    <strong style="font-size:1rem; color:#fff;">毛新宇个人简历介绍</strong>
+                    <p style="margin-top:6px;">本页面为资料汇编，所有信息均来源于公开渠道。</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">关于本站</a>
+                    <a href="#">资料说明</a>
+                    <a href="#">更新记录</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 本页内容仅供学习参考，不构成任何官方信息。涉及个人隐私的信息以官方发布为准。如有不当之处，请联系修正。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
