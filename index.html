@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长泰天气预报-未来一周天气趋势与生活出行建议</title>
+    <meta name="description" content="长泰天气预报实时更新，提供长泰区未来一周天气趋势、气温变化、降水概率、空气质量及生活出行建议，帮助您提前规划行程，安心出行。">
+    <meta name="keywords" content="长泰天气预报,长泰天气,长泰一周天气,长泰气温,长泰降雨,长泰出行建议,福建长泰天气">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #eef5fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        /* Header */
+        .site-header {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 20, 40, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #0b7cd3, #2ba0f0);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b5f9e;
+            letter-spacing: 1px;
+        }
+        .header-info {
+            font-size: 0.9rem;
+            color: #5a6b7a;
+            background: #f0f7fe;
+            padding: 6px 14px;
+            border-radius: 30px;
+        }
+        /* Hero 天气概览 */
+        .hero {
+            background: linear-gradient(145deg, #d7ebff 0%, #f4fbff 70%);
+            border-radius: 28px;
+            margin-top: 24px;
+            padding: 30px 28px;
+            box-shadow: 0 6px 20px rgba(0, 40, 80, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-left {
+            flex: 1 1 300px;
+        }
+        .hero-left h1 {
+            font-size: 2.2rem;
+            color: #0a3d66;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .date-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: #2b4b66;
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+        .live-badge {
+            background: #ffb347;
+            color: #332200;
+            border-radius: 30px;
+            padding: 2px 12px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .temp-now {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin: 10px 0 12px;
+        }
+        .temp-big {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #0a3d66;
+            line-height: 1;
+        }
+        .temp-unit {
+            font-size: 1.8rem;
+            color: #2b6a9c;
+            font-weight: 300;
+        }
+        .temp-range {
+            font-size: 1.1rem;
+            color: #1f5378;
+            background: rgba(255,255,255,0.5);
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: 12px;
+        }
+        .weather-desc {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b5f9e;
+            margin-bottom: 6px;
+        }
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 14px;
+            font-size: 0.95rem;
+        }
+        .hero-stats span {
+            background: rgba(255,255,255,0.7);
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #1c425c;
+        }
+        .hero-right {
+            flex: 0 0 220px;
+            background: #ffffffc9;
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        .hero-right .advice-title {
+            font-weight: 700;
+            color: #0a3d66;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            border-bottom: 2px solid #d9e9fa;
+            padding-bottom: 8px;
+        }
+        .hero-right ul {
+            list-style: none;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #1f3b4f;
+        }
+        .hero-right li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #d0e1f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-right li:last-child {
+            border-bottom: none;
+        }
+        .hero-right li::before {
+            content: "✦";
+            color: #f39c12;
+        }
+        /* 一周预报 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0c3e63;
+            margin: 36px 0 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 24px;
+            background: #0b7cd3;
+            border-radius: 6px;
+        }
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+            background: #ffffff;
+            padding: 18px 14px;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 30, 60, 0.04);
+        }
+        .day-card {
+            background: #f6faff;
+            border-radius: 18px;
+            padding: 14px 6px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .day-card:hover {
+            transform: translateY(-4px);
+            background: #eaf3fe;
+        }
+        .day-name {
+            font-weight: 700;
+            color: #1b4f79;
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+        .day-date {
+            font-size: 0.8rem;
+            color: #6688a2;
+            margin-bottom: 12px;
+        }
+        .day-icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        .day-temp-high {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #d35400;
+        }
+        .day-temp-low {
+            font-size: 1rem;
+            color: #2b6a9c;
+            margin-left: 6px;
+        }
+        .day-weather {
+            font-size: 0.9rem;
+            color: #1f4b6e;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 8px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        /* 内容主体网格 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            color: #0b3f63;
+            margin-bottom: 14px;
+            border-left: 4px solid #0b7cd3;
+            padding-left: 12px;
+        }
+        .card p {
+            color: #334a5c;
+            margin-bottom: 12px;
+        }
+        .advice-list {
+            list-style: none;
+        }
+        .advice-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e7f0f8;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .advice-list li:last-child {
+            border-bottom: none;
+        }
+        .advice-list strong {
+            color: #0b5f9e;
+        }
+        .tag {
+            background: #e2f0fd;
+            border-radius: 30px;
+            padding: 2px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0a4b78;
+            white-space: nowrap;
+        }
+        .sidebar-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+        .sidebar-card h3 {
+            font-size: 1.2rem;
+            color: #0b3f63;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-card ul {
+            list-style: none;
+        }
+        .sidebar-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #dae9f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .sidebar-card li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-card .label {
+            color: #1f5378;
+        }
+        .sidebar-card .value {
+            font-weight: 600;
+            color: #0a3d66;
+        }
+        .weather-tip {
+            background: #fdf8e8;
+            border-radius: 18px;
+            padding: 16px;
+            margin-top: 16px;
+            border-left: 5px solid #f5b342;
+        }
+        /* FAQ 部分 */
+        .faq-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e7f0f8;
+            padding-bottom: 16px;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 700;
+            color: #0b3f63;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .faq-question::before {
+            content: "Q";
+            background: #0b7cd3;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .faq-answer {
+            color: #3d5568;
+            padding-left: 32px;
+            font-size: 0.95rem;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #1b2f3f;
+            color: #c0d2df;
+            margin-top: 40px;
+            padding: 28px 0;
+            border-radius: 24px 24px 0 0;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner p {
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-links a {
+            color: #c0d2df;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .week-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-right {
+                margin-top: 20px;
+                width: 100%;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 600px) {
+            .week-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-left h1 {
+                font-size: 1.7rem;
+            }
+            .temp-big {
+                font-size: 3.5rem;
+            }
+            .header-info {
+                display: none;
+            }
+            .container {
+                padding: 0 12px;
+            }
+            .card, .sidebar-card, .faq-card {
+                padding: 16px;
+            }
+        }
+        @media (max-width: 380px) {
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">⛅</div>
+                <div class="logo-text">长泰天气通</div>
+            </div>
+            <div class="header-info">福建省漳州市长泰区 · 实时更新</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 实时天气概览 -->
+        <section class="hero">
+            <div class="hero-left">
+                <h1>长泰天气预报</h1>
+                <div class="date-status">
+                    <span>今天 · 3月19日 周二</span>
+                    <span class="live-badge">实时</span>
+                </div>
+                <div class="temp-now">
+                    <span class="temp-big">18</span>
+                    <span class="temp-unit">°C</span>
+                    <span class="temp-range">13°C ~ 24°C</span>
+                </div>
+                <div class="weather-desc">☁️ 多云转晴</div>
+                <div class="hero-stats">
+                    <span>💧 湿度 65%</span>
+                    <span>🌬️ 东南风 2级</span>
+                    <span>🌅 日出 06:12</span>
+                    <span>🌇 日落 18:22</span>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="advice-title">今日生活参考</div>
+                <ul>
+                    <li>气温舒适，适宜户外活动</li>
+                    <li>紫外线中等，注意防晒</li>
+                    <li>昼夜温差较大，备薄外套</li>
+                    <li>空气质量优，可开窗通风</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 一周天气预报 -->
+        <section>
+            <h2 class="section-title">未来一周趋势</h2>
+            <div class="week-grid">
+                <div class="day-card">
+                    <div class="day-name">周三</div>
+                    <div class="day-date">3/19</div>
+                    <div class="day-icon">🌤️</div>
+                    <div><span class="day-temp-high">24°</span><span class="day-temp-low">13°</span></div>
+                    <div class="day-weather">多云转晴</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周四</div>
+                    <div class="day-date">3/20</div>
+                    <div class="day-icon">☀️</div>
+                    <div><span class="day-temp-high">26°</span><span class="day-temp-low">15°</span></div>
+                    <div class="day-weather">晴</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周五</div>
+                    <div class="day-date">3/21</div>
+                    <div class="day-icon">🌦️</div>
+                    <div><span class="day-temp-high">25°</span><span class="day-temp-low">17°</span></div>
+                    <div class="day-weather">阵雨</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周六</div>
+                    <div class="day-date">3/22</div>
+                    <div class="day-icon">☁️</div>
+                    <div><span class="day-temp-high">23°</span><span class="day-temp-low">16°</span></div>
+                    <div class="day-weather">阴</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周日</div>
+                    <div class="day-date">3/23</div>
+                    <div class="day-icon">🌧️</div>
+                    <div><span class="day-temp-high">20°</span><span class="day-temp-low">14°</span></div>
+                    <div class="day-weather">小雨</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周一</div>
+                    <div class="day-date">3/24</div>
+                    <div class="day-icon">☀️</div>
+                    <div><span class="day-temp-high">22°</span><span class="day-temp-low">12°</span></div>
+                    <div class="day-weather">晴</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">周二</div>
+                    <div class="day-date">3/25</div>
+                    <div class="day-icon">🌤️</div>
+                    <div><span class="day-temp-high">24°</span><span class="day-temp-low">14°</span></div>
+                    <div class="day-weather">多云</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主要双栏内容 -->
+        <div class="content-grid">
+            <div>
+                <!-- 生活建议 -->
+                <article class="card">
+                    <h2>🌿 长泰生活出行建议</h2>
+                    <p>长泰区地处福建省东南部，气候温和湿润，属于南亚热带海洋性季风气候。春季冷暖空气交替频繁，天气变化较快，早晚温差明显。建议市民和游客及时关注最新天气预报，合理安排出行与穿着。</p>
+                    <ul class="advice-list">
+                        <li><span class="tag">穿衣</span><div><strong>今日舒适</strong>，建议穿长袖T恤、薄衬衫或针织衫，早晚可加一件薄外套。</div></li>
+                        <li><span class="tag">运动</span><div>天气晴朗，空气质量好，非常适合晨跑、骑行等户外运动，注意补水。</div></li>
+                        <li><span class="tag">洗车</span><div>未来两天无降雨，适合清洗车辆；周五有阵雨，如需洗车可安排在明后两天。</div></li>
+                        <li><span class="tag">晾晒</span><div>今天和明天阳光较好，被褥、衣物可趁晴好天气晾晒。</div></li>
+                        <li><span class="tag">出行</span><div>周末有小雨，雨天路滑，驾车请减速慢行，外出携带雨具。</div></li>
+                    </ul>
+                </article>
+
+                <!-- 天气科普 / 本地特色 -->
+                <article class="card">
+                    <h2>🏞️ 长泰气候特点与四季指南</h2>
+                    <p>长泰区位于漳州市东北部，地貌以山地丘陵为主，森林覆盖率高，素有“闽南宝地”之称。受海洋调节，长泰冬无严寒，夏无酷暑，年平均气温约21℃。雨季集中在5月至9月，夏季午后多雷阵雨，出行常备晴雨伞十分必要。</p>
+                    <p><strong>春季（3-5月）</strong>：气温回升，但冷暖波动大，需注意“倒春寒”。<br>
+                    <strong>夏季（6-9月）</strong>：高温高湿，午后热雷雨多发，注意防暑和防雨。<br>
+                    <strong>秋季（10-11月）</strong>：天高气爽，气温宜人，是最适合旅游的季节。<br>
+                    <strong>冬季（12-2月）</strong>：温和少雨，偶尔有寒潮影响，最低气温可降至5℃左右。</p>
+                    <p>如果您计划前往天柱山、十里蓝山或长泰漂流，建议出发前再次查看短时预报，山区小气候多变，温度通常比城区低2-3℃。</p>
+                </article>
+            </div>
+
+            <aside>
+                <!-- 空气质量与湿度 -->
+                <div class="sidebar-card">
+                    <h3>🌬️ 空气质量</h3>
+                    <ul>
+                        <li><span class="label">AQI 指数</span><span class="value">42 优</span></li>
+                        <li><span class="label">PM2.5</span><span class="value">22 μg/m³</span></li>
+                        <li><span class="label">PM10</span><span class="value">35 μg/m³</span></li>
+                        <li><span class="label">相对湿度</span><span class="value">65%</span></li>
+                    </ul>
+                    <div class="weather-tip">
+                        💡 空气清新，适合开窗通风，敏感人群可正常外出活动。
+                    </div>
+                </div>
+
+                <!-- 日出日落 -->
+                <div class="sidebar-card">
+                    <h3>🌅 天文气象参考</h3>
+                    <ul>
+                        <li><span class="label">日出时间</span><span class="value">06:12</span></li>
+                        <li><span class="label">日落时间</span><span class="value">18:22</span></li>
+                        <li><span class="label">紫外线指数</span><span class="value">中等（4级）</span></li>
+                        <li><span class="label">体感温度</span><span class="value">约 18°C</span></li>
+                    </ul>
+                </div>
+
+                <!-- 周边地区天气 -->
+                <div class="sidebar-card">
+                    <h3>📍 长泰周边天气</h3>
+                    <ul>
+                        <li><span class="label">漳州市区</span><span class="value">19°C 多云</span></li>
+                        <li><span class="label">龙文区</span><span class="value">18°C 阴</span></li>
+                        <li><span class="label">龙海区</span><span class="value">19°C 多云</span></li>
+                        <li><span class="label">华安县</span><span class="value">17°C 小雨</span></li>
+                        <li><span class="label">厦门同安</span><span class="value">19°C 晴</span></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- FAQ 部分 -->
+        <section class="faq-card">
+            <h2 style="font-size: 1.5rem; margin-bottom: 16px; border-left: 4px solid #0b7cd3; padding-left: 14px; color: #0b3f63;">❓ 关于长泰天气的常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">长泰天气预报多久更新一次？</div>
+                <div class="faq-answer">本页面数据通常每小时自动更新一次，但在天气剧烈变化时（如雷雨、台风）更新频率会加密。建议您在出行前查看最新短时预报。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">为什么长泰山区和平原温差这么大？</div>
+                <div class="faq-answer">长泰境内多山地丘陵，海拔差异直接影响气温。例如天柱山、吴田山等区域海拔较高，气温比城区低2-4℃，且云雾多、湿度大，前往山区请多备一件保暖衣物。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">长泰一年中哪个季节降雨最多？</div>
+                <div class="faq-answer">长泰降水主要集中在5月至9月，其中6月常为梅雨季，8月、9月受台风外围环流影响多有强降雨。冬季降雨较少，多为阴雨绵绵的小雨天气。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何获取最准确的长泰实时预警信息？</div>
+                <div class="faq-answer">当有台风、暴雨、雷电等灾害性天气时，请通过当地气象部门官方渠道获取预警信号，本页面侧重日常趋势参考，预警信息请以官方发布为准。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 长泰天气通 · 数据仅供参考，请以气象台发布为准</p>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">隐私说明</a>
+                <a href="#">联系我们</a>
+            </div>
+        </div>
+    </footer>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
